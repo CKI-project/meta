@@ -120,7 +120,7 @@ TODO: See if we can define allowed configuration types more strictly.
 
 #### Output directory
 
-* "kernel.tar.gz" - the built kernel tarball
+* "kernel.tar.gz" - the built kernel tarball, as required by "run" input.
 * "kernel.config" - the used kernel configuration
 * "build.log" - diagnostics output of the building stage
 * "build.done" - empty file, created only if build stage succeeded
@@ -128,3 +128,33 @@ TODO: See if we can define allowed configuration types more strictly.
 #### Exit status
 Zero on success, one if "build.done" is missing, two and greater if other
 failure occurred.
+
+Run
+---
+
+Run tests on a kernel.
+
+### Inputs
+
+#### Command-line options
+
+* Runner type
+    * "beaker" - run tests in Beaker. Requires Beaker client ("bkr")
+      configured for access to a Beaker service.
+* Runner parameters
+    * "beaker"
+        * Beaker job XML template
+        * Beaker user to run the job as. Optional.
+
+#### Input directory
+
+* "kernel.tar.gz" - the built kernel tarball
+
+  TODO: Describe minimal requirements to the tarball, so that we can
+  substitute this with a minimal "kernel" for testing.
+
+#### Output directory
+
+* "run.done" - empty file, created only if run stage completed.
+
+TODO: Describe representation of test results
