@@ -44,6 +44,22 @@ Each command has inputs and outputs documented explicitly, so they could be
 used both by skt and other programs, however some parts might be defined
 opaque for use by skt only. Specific command descriptions follow.
 
+All stages
+----------
+
+### Report text
+Each stage output includes a file containing a human-readable report text,
+summarizing what happened during the stage. That text can then be included
+into the overall report by sktm. The text can refer to other files output by
+the stage, using special formatting, which can then be replaced by skt by
+e.g. references to e-mail attachments or hyperlinks.
+
+The syntax of such references is `{<NAME>}`, where `<NAME>` is the name of the
+output file to include into the report. To provide an option to include
+literal curly braces into reports, any characters preceded by a backslash
+would be copied by sktm into the summarized report literally, without
+interpretation.
+
 Merge
 -----
 
@@ -72,6 +88,7 @@ No files expected
 * "source" directory containing what is required as the input by the
   "Build" command.
 * "merge.log" - diagnostics output of the merging attempt.
+* "merge.report" - report text, as described above
 * "merge.done" - empty file, created only if merge stage succeeded
 
 #### Exit status
@@ -123,6 +140,7 @@ TODO: See if we can define allowed configuration types more strictly.
 * "kernel.tar.gz" - the built kernel tarball, as required by "run" input.
 * "kernel.config" - the used kernel configuration
 * "build.log" - diagnostics output of the building stage
+* "build.report" - report text, as described above
 * "build.done" - empty file, created only if build stage succeeded
 
 #### Exit status
@@ -155,6 +173,7 @@ Run tests on a kernel.
 
 #### Output directory
 
+* "run.report" - report text, as described above
 * "run.done" - empty file, created only if run stage completed.
 
 TODO: Describe representation of test results
