@@ -51,6 +51,14 @@ All stages
 
 #### Output directory
 
+Names of all files output by a stage must beging with the stage name followed
+by a dot. This way it should be possible to detect if a stage ran and makes it
+easier to delete all files belonging to a stage.
+
+The output of each stage doesn't have to be limited to particular files
+described below, and can include more files. E.g. extra files referenced by
+the report text. However, all of them must observe the naming scheme above.
+
 ##### Report text
 Each stage output includes a file containing a human-readable report text,
 summarizing what happened during the stage. That text can then be included
@@ -104,8 +112,8 @@ No files expected
 
 #### Output directory
 
-* "source" directory containing what is required as the input by the
-  "Build" command.
+* "merge.source" directory containing what is required as the input by the
+  "Build" stage.
 * "merge.log" - diagnostics output of the merging attempt.
 * "merge.report" - report text, as described above
 * "merge.result" - stage result status, as described above
@@ -134,8 +142,8 @@ TODO: See if we can define allowed configuration types more strictly.
 
 #### Input directory
 
-* "source" directory containing the source of the "kernel", must contain
-  the following (TODO: make sure everything we need is listed):
+* "merge.source" - directory containing the source of the "kernel", must
+  contain the following (TODO: make sure everything we need is listed):
     * Makefile
         * Must support the following targets (TODO: detail all targets):
             * "mrproper" - cleanup the tree
@@ -151,8 +159,8 @@ TODO: See if we can define allowed configuration types more strictly.
 
 #### Output directory
 
-* "kernel.tar.gz" - the built kernel tarball, as required by "run" input.
-* "kernel.config" - the used kernel configuration
+* "build.kernel.tar.gz" - the built kernel tarball, as required by "run" input.
+* "build.kernel.config" - the used kernel configuration
 * "build.log" - diagnostics output of the building stage
 * "build.report" - report text, as described above
 * "build.result" - stage result status, as described above
@@ -176,7 +184,7 @@ Run tests on a kernel.
 
 #### Input directory
 
-* "kernel.tar.gz" - the built kernel tarball
+* "build.kernel.tar.gz" - the built kernel tarball
 
   TODO: Describe minimal requirements to the tarball, so that we can
   substitute this with a minimal "kernel" for testing.
