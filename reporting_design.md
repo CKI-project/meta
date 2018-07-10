@@ -47,7 +47,11 @@ opaque for use by skt only. Specific command descriptions follow.
 All stages
 ----------
 
-### Report text
+### Outputs
+
+#### Output directory
+
+##### Report text
 Each stage output includes a file containing a human-readable report text,
 summarizing what happened during the stage. That text can then be included
 into the overall report by sktm. The text can refer to other files output by
