@@ -191,5 +191,3 @@ Run tests on a kernel.
 
 * "run.report" - report text, as described above
 * "run.result" - stage result status, as described above
-
-TODO: Describe representation of test results
