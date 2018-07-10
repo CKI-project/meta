@@ -114,7 +114,6 @@ No files expected
 
 * "merge.source" directory containing what is required as the input by the
   "Build" stage.
-* "merge.log" - diagnostics output of the merging attempt.
 * "merge.report" - report text, as described above
 * "merge.result" - stage result status, as described above
 
@@ -161,7 +160,6 @@ TODO: See if we can define allowed configuration types more strictly.
 
 * "build.kernel.tar.gz" - the built kernel tarball, as required by "run" input.
 * "build.kernel.config" - the used kernel configuration
-* "build.log" - diagnostics output of the building stage
 * "build.report" - report text, as described above
 * "build.result" - stage result status, as described above
 
