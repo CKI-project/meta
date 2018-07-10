@@ -64,6 +64,21 @@ literal curly braces into reports, any characters preceded by a backslash
 would be copied by sktm into the summarized report literally, without
 interpretation.
 
+##### Result status
+Each stage output includes a status file, which is set executable and contains
+either the `true` or `false` strings, for the overall stage status of success
+or failure respectively. If the file is missing, but any of the other output
+files are present, the stage can be considered as incomplete, i.e. it must
+have exprienced an error, and there was no conclusive result.
+
+#### Exit status
+Execution of each stage should return an exit status of zero, if the stage
+completed succesfully, one if it failed, and something else if an error
+occurred.
+
+The same exit status (without differentiating errors) can be reproduced by
+executing the result status file.
+
 Merge
 -----
 
@@ -93,11 +108,7 @@ No files expected
   "Build" command.
 * "merge.log" - diagnostics output of the merging attempt.
 * "merge.report" - report text, as described above
-* "merge.done" - empty file, created only if merge stage succeeded
-
-#### Exit status
-Zero on success, one if "merge.done" is missing, two and greater if other
-failure occurred.
+* "merge.result" - stage result status, as described above
 
 Build
 -----
@@ -135,7 +146,6 @@ TODO: See if we can define allowed configuration types more strictly.
             * "rh-configs" - generate a set of configuration files
               somewhere in the build directory
             * other targets generating kernel configuration
-* "merge.done" - empty file
 
 ### Outputs
 
@@ -145,11 +155,7 @@ TODO: See if we can define allowed configuration types more strictly.
 * "kernel.config" - the used kernel configuration
 * "build.log" - diagnostics output of the building stage
 * "build.report" - report text, as described above
-* "build.done" - empty file, created only if build stage succeeded
-
-#### Exit status
-Zero on success, one if "build.done" is missing, two and greater if other
-failure occurred.
+* "build.result" - stage result status, as described above
 
 Run
 ---
@@ -178,6 +184,6 @@ Run tests on a kernel.
 #### Output directory
 
 * "run.report" - report text, as described above
-* "run.done" - empty file, created only if run stage completed.
+* "run.result" - stage result status, as described above
 
 TODO: Describe representation of test results
