@@ -68,9 +68,34 @@ e.g. references to e-mail attachments or hyperlinks.
 
 The syntax of such references is `{<PATH>}`, where `<PATH>` is the path to the
 output file to include into the report, relative to the directory the report
-file is in. To provide an option to include literal curly braces into reports,
-any characters preceded by a backslash would be copied by sktm into the
-summarized report literally, without interpretation.
+file is in.
+
+The text can refer to other reports to be included directly into the resulting
+report text. Such included reports are given a name, which is used to
+"namespace" all the output files they refer to, by e.g. prepending it to their
+filenames. The syntax of such references is `<<NAME>:<PATH>>`, where `<NAME>`
+is the report name (consisting of alphanumeric characters and underscores, can
+be empty for "root" namespace), and `<PATH>` is the path to the report to
+include, relative to the directory the including report text resides in.
+
+For example, the following report:
+
+    x86_64 build failed:
+    <x86_64:x86_64/build.report>
+
+is referring to another report located in `x86_64/build.report`, and is naming
+it `x86_64`. So, if that report was:
+
+    See {build.log.gz} for details.
+
+then e.g. the resulting e-mail would read:
+
+    x86_64 build failed:
+    See the attached x86_64_build.log.gz for details.
+
+To provide the option to include literal curly braces or angle brackets into
+reports, any characters preceded by a backslash would be copied by sktm into
+the summarized report literally, without interpretation.
 
 ##### Result status
 Each stage output includes a status file, which is set executable and contains
