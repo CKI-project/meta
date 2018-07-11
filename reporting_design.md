@@ -51,7 +51,7 @@ All stages
 
 #### Output directory
 
-Names of all files output by a stage must beging with the stage name followed
+Names of all files output by a stage must begin with the stage name followed
 by a dot. This way it should be possible to detect if a stage ran and makes it
 easier to delete all files belonging to a stage.
 
@@ -77,11 +77,11 @@ Each stage output includes a status file, which is set executable and contains
 either the `true` or `false` strings, for the overall stage status of success
 or failure respectively. If the file is missing, but any of the other output
 files are present, the stage can be considered as incomplete, i.e. it must
-have exprienced an error, and there was no conclusive result.
+have experienced an error, and there was no conclusive result.
 
 #### Exit status
 Execution of each stage should return an exit status of zero, if the stage
-completed succesfully, one if it failed, and something else if an error
+completed successfully, one if it failed, and something else if an error
 occurred.
 
 The same exit status (without differentiating errors) can be reproduced by
