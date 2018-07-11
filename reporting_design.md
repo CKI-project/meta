@@ -159,7 +159,6 @@ TODO: See if we can define allowed configuration types more strictly.
 #### Output directory
 
 * "build.kernel.tar.gz" - the built kernel tarball, as required by "run" input.
-* "build.kernel.config" - the used kernel configuration
 * "build.report" - report text, as described above
 * "build.result" - stage result status, as described above
 
