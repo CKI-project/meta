@@ -66,11 +66,11 @@ into the overall report by sktm. The text can refer to other files output by
 the stage, using special formatting, which can then be replaced by skt by
 e.g. references to e-mail attachments or hyperlinks.
 
-The syntax of such references is `{<NAME>}`, where `<NAME>` is the name of the
-output file to include into the report. To provide an option to include
-literal curly braces into reports, any characters preceded by a backslash
-would be copied by sktm into the summarized report literally, without
-interpretation.
+The syntax of such references is `{<PATH>}`, where `<PATH>` is the path to the
+output file to include into the report, relative to the directory the report
+file is in. To provide an option to include literal curly braces into reports,
+any characters preceded by a backslash would be copied by sktm into the
+summarized report literally, without interpretation.
 
 ##### Result status
 Each stage output includes a status file, which is set executable and contains
